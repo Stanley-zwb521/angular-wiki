@@ -1,0 +1,1047 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3 学习Angular模块、组件和组件模板知识</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4 学习Angular模块路由和依赖注入知识" href="route.html" />
+    <link rel="prev" title="2 快速开启第一个Angular" href="typescript.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/main-page-logo-small-hat.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">培训资料：</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="start.html">Angular 10 课程教学计划</a></li>
+<li class="toctree-l1"><a class="reference internal" href="node.html"><span class="sectnum">1</span> 掌握Node.js和npm基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typescript.html"><span class="sectnum">2</span> 快速开启第一个Angular</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><span class="sectnum">3</span> 学习Angular模块、组件和组件模板知识</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#angular-cli"><span class="sectnum">3.1</span> 使用 Angular CLI 创建应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1"><span class="sectnum">3.1.1</span> 初识Angular CLI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2"><span class="sectnum">3.1.2</span> 准备Angular的开发环境</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3"><span class="sectnum">3.1.3</span> Angular CLI常用命令及选项</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4"><span class="sectnum">3.1.4</span> Angular项目结构概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5"><span class="sectnum">3.1.5</span> 如何启动Angular应用程序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6"><span class="sectnum">3.1.6</span> Angular的启动过程有哪些步骤</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id7"><span class="sectnum">3.2</span> 组件的基础概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8"><span class="sectnum">3.3</span> 模板绑定语法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9"><span class="sectnum">3.3.1</span> 插值表达式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10"><span class="sectnum">3.3.2</span> 模板绑定语法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11"><span class="sectnum">3.3.3</span> 模板引用变量</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id12"><span class="sectnum">3.4</span> 指令</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13"><span class="sectnum">3.4.1</span> 属性型指令</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14"><span class="sectnum">3.4.2</span> 结构型指令</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id15"><span class="sectnum">3.5</span> 管道</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id16"><span class="sectnum">3.5.1</span> 管道运算符</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17"><span class="sectnum">3.5.2</span> 安全导航运算符</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18"><span class="sectnum">3.5.3</span> 非空断言运算符</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19"><span class="sectnum">3.5.4</span> 管道示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id20"><span class="sectnum">3.6</span> 组件之间的通信</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id21"><span class="sectnum">3.6.1</span> 父组件至子组件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output"><span class="sectnum">3.6.2</span> 子组件至父组件：&#64;Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#viewchild"><span class="sectnum">3.6.3</span> 子组件至父组件：&#64;ViewChild</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22"><span class="sectnum">3.6.4</span> 不相关组件</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id23"><span class="sectnum">3.7</span> 组件的生命周期钩子函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id24"><span class="sectnum">3.8</span> 参照</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="route.html"><span class="sectnum">4</span> 学习Angular模块路由和依赖注入知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="form.html"><span class="sectnum">5</span> 学习Angular表单和RxJS响应式知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui.html"><span class="sectnum">6</span> 学习RxJS基础及Angular集成UI框架</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advance.html"><span class="sectnum">7</span> 学习Angular高级知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sba.html"><span class="sectnum">8</span> 实战Angular应用</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Angular 10</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+                   
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+    <ul class="wy-breadcrumbs">
+        
+        <li><a href="../index.html">首页</a> &raquo;</li>
+        
+        <li><span class="sectnum">3</span> 学习Angular模块、组件和组件模板知识</li>
+         
+        <li class="wy-breadcrumbs-aside">
+            <a href="https://pages.github.ibm.com/fsd-training/cvitube/course" class="fa fa-github"> CVITube</a>   
+        </li>
+        
+    </ul>
+
+    
+    <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="angular">
+<h1><span class="sectnum">3</span> 学习Angular模块、组件和组件模板知识<a class="headerlink" href="#angular" title="Permalink to this headline">¶</a></h1>
+<p>本章开始，将依照官方网站的示例（<a class="reference external" href="https://angular.cn/tutorial">英雄指南练习</a> ），逐步带领读者学习和掌握Angular知识。</p>
+<div class="section" id="angular-cli">
+<h2><span class="sectnum">3.1</span> 使用 Angular CLI 创建应用<a class="headerlink" href="#angular-cli" title="Permalink to this headline">¶</a></h2>
+<p>关于Angular CLI的知识，主要有下面内容：</p>
+<div class="section" id="id1">
+<h3><span class="sectnum">3.1.1</span> 初识Angular CLI<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>安装Angular CLI</p></li>
+<li><p>运行Angular CLI</p></li>
+<li><p>卸载及更新Angular CLI</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h3><span class="sectnum">3.1.2</span> 准备Angular的开发环境<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>如何扩展IDE的功能</p></li>
+<li><p>在运行时编辑工程</p></li>
+<li><p>编译时的错误提醒</p></li>
+<li><p>运行时的错误提醒</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h3><span class="sectnum">3.1.3</span> Angular CLI常用命令及选项<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ng n angular-tour-of-heroes --defaults
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>初始化命令及选项介绍: <a class="reference external" href="https://angular.io/cli/new">https://angular.io/cli/new</a></p></li>
+<li><p>创建命令及选项介绍: <a class="reference external" href="https://angular.io/cli/generate">https://angular.io/cli/generate</a></p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3><span class="sectnum">3.1.4</span> Angular项目结构概述<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id5">
+<h3><span class="sectnum">3.1.5</span> 如何启动Angular应用程序<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id6">
+<h3><span class="sectnum">3.1.6</span> Angular的启动过程有哪些步骤<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><span class="sectnum">3.2</span> 组件的基础概念<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>组件包含了一组特定的功能，每个组件的功能都单一且独立，可以进行重复使用；组件可以通过 angular cli 进行创建，生成的组件位于项目的 src/app/ 路径下面：</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ng g component heroes <span class="c1">## 创建一个heroes（英雄列表）组件</span>
+</pre></div>
+</div>
+<p>当需要将组件放置在某个指定的目录下时，可以直接在 ng g 命令中添加路径：</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ng g component components/hero <span class="c1">## 将 hero 组件生成到 components 路径下</span>
+</pre></div>
+</div>
+<p>angular 应用就是通过一个个的组件所构成的组件树，一个组件包含了如下的四个部分：</p>
+<ul class="simple">
+<li><p>heroes.component.ts：组件类，用来处理数据和功能，为视图呈现提供支持</p></li>
+<li><p>heroes.component.html：组件对应的页面 HTML 模板，用来呈现组件的功能</p></li>
+<li><p>heroes.component.scss：只针对当前组件的样式</p></li>
+<li><p>heroes.component.spec.ts：当前组件的单元测试文件（非必须）</p></li>
+</ul>
+<p>当通过命令行创建一个新的组件之后，会自动将新创建的组件注册到应用的根模块（app.module.ts）中。</p>
+<p>在组件类中，通过使用 &#64;Component 装饰器用来将类声明为组件类，并为这个组件类配置一些元数据，以决定该组件在运行期间该如何处理、实例化和使用。</p>
+<p>&#64;Component装饰器中存在三个基础的配置参数，用来完成组件与视图之间的关联：</p>
+<ul class="simple">
+<li><p>selector：选择器，当我们在页面上添加了这个选择器指定的标签（&lt;app-heroes&gt;&lt;/app-heroes&gt;）后，就会在当前使用位置上创建并插入这个组件的一个实例</p></li>
+<li><p>templateUrl：该组件所对应的 HTML 模板文件地址</p></li>
+<li><p>styleUrls：该组件视图所特有的 css 样式文件地址</p></li>
+</ul>
+<p>如上所述：当需要使用这个组件时，直接在页面上添加选择器对应的标签就可以了。</p>
+</div>
+<div class="section" id="id8">
+<h2><span class="sectnum">3.3</span> 模板绑定语法<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>在 angular 应用中，组件扮演着控制器或是视图模型的作用，在创建组件时会关联一个 html 文件，这个 html 文件则是一个基础的 angular 模板文件</p>
+<p>在这个模板文件中，可以通过 angular 内置的模板语法与 html 元素进行结合，从而告诉 angular 如何根据我们的应用逻辑和数据来渲染页面</p>
+<div class="section" id="id9">
+<h3><span class="sectnum">3.3.1</span> 插值表达式<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>插值表达式可以将组件中的属性值或者是模板上的数据通过模板表达式运算符进行计算，最终将值渲染到视图页面上，
+使用双花括号插值显示应用标题：</p>
+<div class="highlight-html+ng2 notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="cp">{{</span><span class="nv">title</span><span class="cp">}}</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>模板表达式的变量来源：</p>
+<ul class="simple">
+<li><p>模板本身的变量</p></li>
+<li><p>指令的上下文变量</p></li>
+<li><p>组件的成员信息（属性 or 方法）</p></li>
+<li><p>在使用模板表达式时，如果变量名在多个来源中都存在的话，则模板变量是最优先的，其次是指令的上下文变量，最后是组件的成员</p></li>
+</ul>
+<p>在使用模板表达式时应该遵循如下的原则：</p>
+<ul class="simple">
+<li><p>简单：正常情况下，应该将业务逻辑或是数据运算放到组件中，模板表达式只作为属性或方法的调用</p></li>
+<li><p>快速执行：模板表达式得出的数据应该快速结束，否则就会对于用户体验造成影响</p></li>
+<li><p>没有可见的副作用：模板表达式只作为数据的展示，不应该改变任何的数据；应该构建出幂等的表达式，除非依赖的值发生变化，否则多次调用时，应该返回相同的数据信息</p></li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h3><span class="sectnum">3.3.2</span> 模板绑定语法<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>通过数据绑定机制，将数据源与视图进行绑定，从而实现源数据与用户呈现的一致性</p>
+<ul>
+<li><p>从数据源到视图：插值、组件中的属性、dom 元素的 property、css 样式、css 类:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1、插值表达式：{{expression}}
+2、使用 [] 进行绑定：&lt;a [href]=&#39;expression&#39;&gt;&lt;/a&gt;
+3、使用 bind 进行绑定：&lt;a bind-href=&#39;expression&#39;&gt;&lt;/a&gt;
+</pre></div>
+</div>
+</li>
+<li><p>从视图到数据源：事件:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1、使用 () 进行绑定：&lt;a (click)=&#39;statement&#39;&gt;&lt;/a&gt;
+2、使用 on 进行绑定：&lt;a on-click=&#39;statement&#39;&gt;&lt;/a&gt;
+</pre></div>
+</div>
+</li>
+<li><p>视图与数据源之间的双向绑定：数据对象:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1、使用 [()] 进行绑定：&lt;input type=&quot;text&quot; [(ngModel)]=&quot;product.Name&quot;&gt;
+2、使用 bindon 进行绑定：&lt;input type=&quot;text&quot; bindon-ngModel=&quot;product.Name&quot;&gt;
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h3><span class="sectnum">3.3.3</span> 模板引用变量<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>通过使用 $event 作为方法的参数会将许多用不到的模板信息传递到组件中，导致我们在仅仅是为了获取数据的前提下，却需要对于页面元素十分了解，违背了模板（用户所能看到的）与组件（应用如何去处理用户数据）之间的关注点分类的原则。因此，这里应该使用模板引用变量的方式获取数据信息。</p>
+<p>模板引用变量是对模板中 DOM 元素的引用，提供了从模块中直接访问元素的能力。</p>
+<div class="highlight-html+ng2 notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="p">#</span><span class="na">refMsgInput</span><span class="p"> (</span><span class="na">keyup</span><span class="p">)</span><span class="o">=</span><span class="s">&quot;getRefMsg(refMsgInput.value)&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>通过模板引入变量的方式获取到输入的值：<span class="cp">{{</span><span class="nv">refMsg</span><span class="cp">}}</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppComponent</span> <span class="p">{</span>
+   <span class="kr">public</span> <span class="nx">refMsg</span>: <span class="kt">string</span><span class="p">;</span>
+
+   <span class="nx">getRefMes</span><span class="p">(</span><span class="nx">msg</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">refMsg</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id12">
+<h2><span class="sectnum">3.4</span> 指令<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id13">
+<h3><span class="sectnum">3.4.1</span> 属性型指令<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<p>属性型指令被应用在视图 dom 元素上，用来改变 dom 元素的外观或行为</p>
+<p>NgClass：用来设置元素的多个 css 类属性，如果只设置一个 css 类，应该使用模板绑定语法中 class 类绑定</p>
+<div class="highlight-html+ng2 notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span> <span class="p">[</span><span class="na">ngClass</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;inlineStyle&quot;</span><span class="p">&gt;</span>NgClass 属性指令<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">inlineStyle</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s1">&#39;text-red&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="s1">&#39;bg-blue&#39;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+ <span class="p">};</span>
+</pre></div>
+</div>
+<p>这里的 text-red、bg-blue 都是 css 类名，如果想要在指定的元素上添加该类，则 css 类名对应的值为 true，反之则为 false。</p>
+<p>NgStyle：用来设置元素的多个内联样式，如果只设置一个内联样式，应该使用模板绑定语法中的样式绑定</p>
+<div class="highlight-html+ng2 notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span> <span class="p">[</span><span class="na">ngStyle</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;currentStyles&quot;</span><span class="p">&gt;</span>NgStyle 属性指令<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">currentStyles</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s1">&#39;font-style&#39;</span><span class="o">:</span> <span class="s1">&#39;italic&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;font-weight&#39;</span><span class="o">:</span> <span class="s1">&#39;bold&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;font-size&#39;</span><span class="o">:</span> <span class="s1">&#39;24px&#39;</span>
+   <span class="p">};</span>
+</pre></div>
+</div>
+<p>通过在组件的属性中设置多个内联样式对象的形式，完成对于页面元素样式的批量设置。</p>
+<p>NgModel：双向数据绑定</p>
+<div class="highlight-html+ng2 notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="p">[(</span><span class="na">ngModel</span><span class="p">)]</span><span class="o">=</span><span class="s">&quot;hero.name&quot;</span><span class="p">/&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h3><span class="sectnum">3.4.2</span> 结构型指令<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p>结构型指令用来操作 dom 树，通过进行一些的逻辑判断，从而完成对于页面布局的修改</p>
+<p>NgIf：根据表达式的值（true or false）来创建或者销毁 dom 元素</p>
+<div class="highlight-html+ng2 notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span> <span class="p">*</span><span class="na">ngIf</span><span class="o">=</span><span class="s">&quot;expr&quot;</span><span class="p">&gt;</span>NgIf 结构型指令<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>当 expr 属性为 true 时，这个元素则会显示在页面上，当属性值为 false 时，则不显示该元素</p>
+<p>ngIf 指令并不是通过使用 css 样式来隐藏元素的，当值为 false 时，则这些元素会从 dom 中被销毁，并且所有监听该 dom 元素的事件会被取消，当重新显示该元素时，会重新执行初始化的过程</p>
+<p>与销毁元素不同，对于隐藏的元素来说，所有的元素监听事件还会执行监听的，再次显示时不用重新进行初始化过程</p>
+<p>NgFor：通过定义单条数据的显示格式，angular 以此为模板，循环渲染出所有的数据</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;p *ngFor=&quot;let item of products; let i = index&quot;&gt;{{i+1}} - {{item.name}} --- {{item.price}}&lt;/p&gt;
+</pre></div>
+</div>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">products</span> <span class="o">=</span> <span class="p">[{</span>
+   <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;lalala&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;price&#39;</span><span class="o">:</span> <span class="s1">&#39;$200&#39;</span>
+<span class="p">},</span> <span class="p">{</span>
+   <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;hehehe&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;price&#39;</span><span class="o">:</span> <span class="s1">&#39;$400&#39;</span>
+<span class="p">},</span> <span class="p">{</span>
+   <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;wuwuwu&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;price&#39;</span><span class="o">:</span> <span class="s1">&#39;$120&#39;</span>
+<span class="p">},</span> <span class="p">{</span>
+   <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;xixi&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;price&#39;</span><span class="o">:</span> <span class="s1">&#39;$570&#39;</span>
+<span class="p">}];</span>
+</pre></div>
+</div>
+<p>NgFor 指令上下文中的 index 属性在每次迭代中，会获取到条数据的索引值</p>
+<p>当渲染的数据发生改变时，会导致 DOM 元素的重新渲染，此时可以采用 trackBy 的方式，通过在组件中添加一个方法，指定循环需要跟踪的属性值，此时当渲染的数据发生改变时，只会重新渲染变更了指定的属性值的数据;</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;p&gt;不使用 trackBy 跟踪属性&lt;/p&gt;
+&lt;div&gt;
+&lt;p *ngFor=&quot;let item of products; let i = index;&quot;&gt;
+   {{i+1}} - {{item.name}} --- {{item.price}}
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;使用 trackBy 跟踪属性&lt;/p&gt;
+&lt;div&gt;
+&lt;p *ngFor=&quot;let item of products; let i = index; trackBy: trackByIndex&quot;&gt;
+   {{i+1}} - {{item.name}} --- {{item.price}}
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;button (click)=&quot;addProduct()&quot;&gt;新增&lt;/button&gt;
+</pre></div>
+</div>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
+
+<span class="kd">@Component</span><span class="p">({</span>
+<span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;app-product-list&#39;</span><span class="p">,</span>
+<span class="nx">templateUrl</span><span class="o">:</span> <span class="s1">&#39;./product-list.component.html&#39;</span><span class="p">,</span>
+<span class="nx">styleUrls</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;./product-list.component.scss&#39;</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">ProductListComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+
+<span class="kr">public</span> <span class="nx">products</span> <span class="o">=</span> <span class="p">[{</span>
+   <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;lalala&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;price&#39;</span><span class="o">:</span> <span class="s1">&#39;$200&#39;</span>
+<span class="p">},</span> <span class="p">{</span>
+   <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;hehehe&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;price&#39;</span><span class="o">:</span> <span class="s1">&#39;$400&#39;</span>
+<span class="p">},</span> <span class="p">{</span>
+   <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;wuwuwu&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;price&#39;</span><span class="o">:</span> <span class="s1">&#39;$120&#39;</span>
+<span class="p">},</span> <span class="p">{</span>
+   <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;xixi&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;price&#39;</span><span class="o">:</span> <span class="s1">&#39;$570&#39;</span>
+<span class="p">}];</span>
+
+<span class="kr">constructor</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+
+<span class="nx">ngOnInit</span><span class="p">()</span><span class="o">:</span> <span class="k">void</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">trackByIndex</span><span class="p">(</span><span class="nx">index</span>: <span class="kt">number</span><span class="p">,</span> <span class="nx">item</span>: <span class="kt">any</span><span class="p">)</span><span class="o">:</span> <span class="kt">string</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="nx">item</span><span class="p">.</span><span class="nx">price</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">addProduct() {</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">products</span> <span class="o">=</span> <span class="p">[{</span>
+      <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;lalala&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;price&#39;</span><span class="o">:</span> <span class="s1">&#39;$200&#39;</span>
+   <span class="p">},</span> <span class="p">{</span>
+      <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;hehehe&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;price&#39;</span><span class="o">:</span> <span class="s1">&#39;$400&#39;</span>
+   <span class="p">},</span> <span class="p">{</span>
+      <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;wuwuwu&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;price&#39;</span><span class="o">:</span> <span class="s1">&#39;$120&#39;</span>
+   <span class="p">},</span> <span class="p">{</span>
+      <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;xixi&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;price&#39;</span><span class="o">:</span> <span class="s1">&#39;$570&#39;</span>
+   <span class="p">},</span> <span class="p">{</span>
+      <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;lululu&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;price&#39;</span><span class="o">:</span> <span class="s1">&#39;$&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">()</span>
+   <span class="p">}];</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>NgSwitch：根据条件切换，从候选的几个元素中选择匹配的，放到 DOM 元素中</p>
+</div>
+</div>
+<div class="section" id="id15">
+<h2><span class="sectnum">3.5</span> 管道<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<p>在使用模板表达式绑定数据时，可以使用管道对于表达式的结果进行转换</p>
+<p>管道是一种简单的函数，它们接受输入值并返回转换后的值。通过在模板表达式中使用管道运算符（|）则可以完成相应的结果转换</p>
+<div class="section" id="id16">
+<h3><span class="sectnum">3.5.1</span> 管道运算符<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<p>管道是一种特殊的函数，可以把运算符（|）左边的数据转换成期望呈现给视图的数据格式，例如，将时间进行格式化、将数据转换成 json 字符串的形式等等</p>
+<p>可以针对一个数据使用多个管道进行串联，并且管道运算符的优先级比三元运算符（ ?: ）高，
+使用管道格式化英雄的名字：</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>{{hero.name | uppercase}} Details<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id17">
+<h3><span class="sectnum">3.5.2</span> 安全导航运算符<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<p>在视图中使用的属性值为 null or undefined 时，javascript 和 angular 会引发空指针异常并中断视图的渲染过程， 从而视图会渲染失败，而使用了安全导航运算符（?）后，视图依然会渲染，只是显示的值为空白：</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>名称为：{{products?.name}}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id18">
+<h3><span class="sectnum">3.5.3</span> 非空断言运算符<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<p>在 tsconfig.json 中启用 strictNullChecks 属性，typescript 将会强制开启严格的空值检查，在这种模式下，所有定义了类型的属性是不允许赋值为 null 的，当将属性赋值为 null，则会编译报错。</p>
+<p>非空断言运算符用来告诉编译器对特定的属性不做严格的空值校验，当属性值为 null or undefined 时，不抛错误。在下面的代码中，在判断 obj 存在后，就不再针对 obj.name 进行校验</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>{{obj!.name}}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id19">
+<h3><span class="sectnum">3.5.4</span> 管道示例<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-html+ng2 notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>json 管道<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="cp">{{</span><span class="nv">products</span> | <span class="nv">json</span><span class="cp">}}</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>date 管道<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>现在时间：<span class="cp">{{</span><span class="nv">date</span> | <span class="nv">date</span><span class="s1">:&#39;yyyy-MM-dd HH:mm:ss&#39;</span><span class="cp">}}</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>upper 管道<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>转换成全大写：<span class="cp">{{</span><span class="nv">url</span> | <span class="nv">uppercase</span><span class="cp">}}</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>lower 管道<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>转换成全小写：<span class="cp">{{</span><span class="nv">url</span> | <span class="nv">lowercase</span><span class="cp">}}</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id20">
+<h2><span class="sectnum">3.6</span> 组件之间的通信<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<p>在Angular组件之间共享数据，有以下四种方式：</p>
+<ol class="arabic simple">
+<li><p>父组件至子组件: 通过&#64;Input共享数据</p></li>
+<li><p>子组件至父组件: 通过&#64;Output EventEmitter共享数据</p></li>
+<li><p>子组件至父组件: 通过&#64;ViewChild共享数据</p></li>
+<li><p>不相关组件： 通过service共享数据</p></li>
+</ol>
+<p>在介绍这几种方式之前，先来看下父子组件和不相关组件是什么，在下图中可以看出，左边是描述父子组件关系，左右两个是描述不相关组件关系。</p>
+<a class="reference internal image-reference" href="../_images/angular-sharingdata.png"><img alt="../_images/angular-sharingdata.png" src="../_images/angular-sharingdata.png" style="width: 350px;" /></a>
+<div class="section" id="id21">
+<h3><span class="sectnum">3.6.1</span> 父组件至子组件<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<p>第一种方式，父组件至子组件: 通过&#64;Input共享数据</p>
+<p>这个例子是在子组件中直接列出出父组件中所有的颜色，具体代码如下：</p>
+<div class="literal-block-wrapper docutils container" id="parent-component-ts">
+<div class="code-block-caption"><span class="caption-text">parent.component.ts</span><a class="headerlink" href="#parent-component-ts" title="Permalink to this code">¶</a></div>
+<div class="highlight-typescript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span>
+
+<span class="kd">@Component</span><span class="p">({</span>
+    <span class="nx">template</span><span class="o">:</span><span class="sb">`&lt;h4&gt;Here is the color lists:&lt;/h4&gt;</span>
+<span class="sb">    &lt;app-child [colorLists]=&quot;colorLists&quot;&gt;&lt;/app-child&gt;`</span>
+<span class="p">})</span>
+
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">ParentComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+
+    <span class="kr">private</span> <span class="nx">colorLists</span>: <span class="kt">any</span><span class="p">;</span>
+    <span class="nx">ngOnInit() {</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">colorLists</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;bule&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">];</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="child-component-ts">
+<div class="code-block-caption"><span class="caption-text">child.component.ts</span><a class="headerlink" href="#child-component-ts" title="Permalink to this code">¶</a></div>
+<div class="highlight-typescript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span><span class="p">,</span> <span class="nx">Input</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;@angular/core&quot;</span><span class="p">;</span>
+
+<span class="kd">@Component</span><span class="p">({</span>
+    <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;app-child&#39;</span><span class="p">,</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="sb">`&lt;ul&gt;</span>
+<span class="sb">                &lt;li *ngFor=&quot;let item of colorLists&quot;&gt;{{item}}&lt;/li&gt;</span>
+<span class="sb">            &lt;/ul&gt;`</span>
+<span class="p">})</span>
+
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">ChildComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+    <span class="kd">@Input</span><span class="p">()</span> <span class="nx">colorLists</span>: <span class="kt">any</span><span class="p">;</span>
+    <span class="nx">ngOnInit() {</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>效果如下：</p>
+<a class="reference internal image-reference" href="../_images/angular-sharing-data7.png"><img alt="../_images/angular-sharing-data7.png" src="../_images/angular-sharing-data7.png" style="width: 600px;" /></a>
+</div>
+<div class="section" id="output">
+<h3><span class="sectnum">3.6.2</span> 子组件至父组件：&#64;Output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h3>
+<p>第二种方式，子组件至父组件: 通过&#64;Output EventEmitter共享数据</p>
+<p>这个例子是子组件提供两个按钮进行投票，而父组件中需要实时显示投票结果，具体代码如下：</p>
+<div class="literal-block-wrapper docutils container" id="vote-parent-component-ts">
+<div class="code-block-caption"><span class="caption-text">vote-parent.component.ts</span><a class="headerlink" href="#vote-parent-component-ts" title="Permalink to this code">¶</a></div>
+<div class="highlight-typescript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;@angular/core&quot;</span><span class="p">;</span>
+
+<span class="kd">@Component</span><span class="p">({</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="sb">`&lt;div style=&quot;margin-left:100px;font-size:1.28em;&quot;&gt;</span>
+<span class="sb">            &lt;div&gt; &lt;strong&gt;Here is the vote results:&lt;/strong&gt;&lt;/div&gt;</span>
+<span class="sb">            &lt;div style=&quot;margin-top:20px;&quot;&gt; agreed:{{agreed}}   disagreed: {{disAgreed}}&lt;div&gt;</span>
+<span class="sb">            &lt;/div&gt;</span>
+<span class="sb">            &lt;app-vote-child (vote)=&quot;onVote($event)&quot;&gt;&lt;/app-vote-child&gt;</span>
+<span class="sb">    `</span>
+<span class="p">})</span>
+
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">VoteParentComponent</span> <span class="p">{</span>
+    <span class="kr">private</span> <span class="nx">agreed</span>: <span class="kt">number</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kr">private</span> <span class="nx">disAgreed</span>: <span class="kt">number</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="nx">onVote</span><span class="p">(</span><span class="nx">agree</span>: <span class="kt">boolean</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">agree</span> <span class="o">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">agreed</span><span class="o">++</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">disAgreed</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="vote-child-component-ts">
+<div class="code-block-caption"><span class="caption-text">vote-child.component.ts</span><a class="headerlink" href="#vote-child-component-ts" title="Permalink to this code">¶</a></div>
+<div class="highlight-typescript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">Output</span><span class="p">,</span> <span class="nx">EventEmitter</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;@angular/core&quot;</span><span class="p">;</span>
+
+<span class="kd">@Component</span><span class="p">({</span>
+    <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;app-vote-child&#39;</span><span class="p">,</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="sb">`</span>
+<span class="sb">    &lt;div style=&quot;margin-top:30px;margin-bottom: 15px;&quot;&gt;&lt;strong&gt;please take your vote:&lt;/strong&gt; &lt;/div&gt;</span>
+<span class="sb">    &lt;button (click)=&quot;takeVote(true)&quot;&gt;Agree&lt;/button&gt; &lt;button (click)=&quot;takeVote(false)&quot;&gt;Disagree&lt;/button&gt;</span>
+<span class="sb">    `</span>
+<span class="p">})</span>
+
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">VoteChildComponent</span> <span class="p">{</span>
+    <span class="kd">@Output</span><span class="p">()</span> <span class="nx">vote</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventEmitter</span><span class="o">&lt;</span><span class="nb">Boolean</span><span class="o">&gt;</span><span class="p">();</span>
+
+    <span class="nx">takeVote</span><span class="p">(</span><span class="nx">agree</span>: <span class="kt">Boolean</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">vote</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="nx">agree</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>效果如下：</p>
+<a class="reference internal image-reference" href="../_images/angular-sharing-data8.png"><img alt="../_images/angular-sharing-data8.png" src="../_images/angular-sharing-data8.png" style="width: 600px;" /></a>
+</div>
+<div class="section" id="viewchild">
+<h3><span class="sectnum">3.6.3</span> 子组件至父组件：&#64;ViewChild<a class="headerlink" href="#viewchild" title="Permalink to this headline">¶</a></h3>
+<p>第三种方式，子组件至父组件: 通过&#64;ViewChild共享数据</p>
+<p>在第二种方式中，通过&#64;Output EventEmitter共享数据，父组件只能访问子组件的某几个属性值，但是没办法去调用子组件中的方法。但是通过&#64;ViewChild可是实现父组件同时可以访问子组件中的属性和方法。</p>
+<p>这个例子是一个简单的计时器，所有的计时逻辑都在子组件中，父组件负责显示时间。这个方式需要注意以下两点：</p>
+<p>1.子组件中方法或者变量为public的时候才能被父组件访问</p>
+<p>2.在父组件中，只有等它AfterViewInit之后timerChildComponent才存在</p>
+<div class="literal-block-wrapper docutils container" id="timer-parent-component-ts">
+<div class="code-block-caption"><span class="caption-text">timer-parent.component.ts</span><a class="headerlink" href="#timer-parent-component-ts" title="Permalink to this code">¶</a></div>
+<div class="highlight-typescript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">ViewChild</span><span class="p">,</span> <span class="nx">AfterViewInit</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;@angular/core&quot;</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">TimerChildComponent</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./timer-child.component&#39;</span><span class="p">;</span>
+
+<span class="kd">@Component</span><span class="p">({</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="sb">`</span>
+<span class="sb">    &lt;div style=&quot;margin-left:100px;font-size:1.28em&quot;&gt;</span>
+<span class="sb">    &lt;div style=&quot;margin-top:20px;margin-bottom: 15px;&quot;&gt; &lt;strong&gt;This is a timer: &lt;/strong&gt;&lt;/div&gt;</span>
+<span class="sb">    &lt;button (click)=&quot;start()&quot;&gt; start &lt;/button&gt; &lt;button (click)=&quot;reset()&quot;&gt; reset &lt;/button&gt;</span>
+<span class="sb">    &lt;div style=&quot;background:black;width:80px;height:80px;margin-top:20px;position:relative&quot;&gt;</span>
+<span class="sb">        &lt;div style=&quot;font-size:2.5em;color:green;position:absolute;margin-left: 25px;margin-top: 10px;&quot;&gt;{{seconds()}}&lt;/div&gt;</span>
+<span class="sb">    &lt;/div&gt;</span>
+<span class="sb">    &lt;app-timer-child&gt;&lt;/app-timer-child&gt;</span>
+<span class="sb">    &lt;/div&gt;</span>
+<span class="sb">`</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">TimerParentComponent</span> <span class="kr">implements</span> <span class="nx">AfterViewInit</span> <span class="p">{</span>
+
+    <span class="kd">@ViewChild</span><span class="p">(</span><span class="nx">TimerChildComponent</span><span class="p">)</span>
+    <span class="kr">private</span> <span class="nx">timerChildComponent</span>: <span class="kt">TimerChildComponent</span><span class="p">;</span>
+
+    <span class="nx">seconds() {</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">ngAfterViewInit() {</span>
+        <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">seconds</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">timerChildComponent</span><span class="p">.</span><span class="nx">seconds</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">start() {</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">timerChildComponent</span><span class="p">.</span><span class="nx">onStart</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="nx">reset() {</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">timerChildComponent</span><span class="p">.</span><span class="nx">onReset</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="timer-child-component-ts">
+<div class="code-block-caption"><span class="caption-text">timer-child.component.ts</span><a class="headerlink" href="#timer-child-component-ts" title="Permalink to this code">¶</a></div>
+<div class="highlight-typescript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;@angular/core&quot;</span><span class="p">;</span>
+
+<span class="kd">@Component</span><span class="p">({</span>
+    <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;app-timer-child&#39;</span><span class="p">,</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="sb">`</span>
+<span class="sb">            &lt;div style=&quot;margin-top:15px&quot;&gt;reset count: {{resetCount}}&lt;/div&gt;</span>
+<span class="sb">    `</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">TimerChildComponent</span> <span class="p">{</span>
+
+    <span class="kr">public</span> <span class="nx">seconds</span>: <span class="kt">number</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kr">private</span> <span class="nx">resetCount</span>: <span class="kt">number</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="nx">onStart() {</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">seconds</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">seconds</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">seconds</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">},</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">onReset() {</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">seconds</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">resetCount</span><span class="o">++</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>效果如下：</p>
+<a class="reference internal image-reference" href="../_images/angular-sharing-data9.gif"><img alt="../_images/angular-sharing-data9.gif" src="../_images/angular-sharing-data9.gif" style="width: 600px;" /></a>
+</div>
+<div class="section" id="id22">
+<h3><span class="sectnum">3.6.4</span> 不相关组件<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<p>第四种方式，不相关组件： 通过service共享数据</p>
+<p>如果两个组件直接没有直接联系，那么就可以通过service来通信，在下面的例子中，两个不相关的组件：SiblingOneComponent 和 SiblingTwoComponent，在SiblingOneComponent写消息，实时在SiblingTwoComponent显示出来。代码如下：</p>
+<div class="literal-block-wrapper docutils container" id="data-service-ts">
+<div class="code-block-caption"><span class="caption-text">data.service.ts</span><a class="headerlink" href="#data-service-ts" title="Permalink to this code">¶</a></div>
+<div class="highlight-typescript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;@angular/core&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Subject</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;rxjs/Subject&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">DataService</span> <span class="p">{</span>
+    <span class="kr">private</span> <span class="nx">msgContent</span>: <span class="kt">Subject</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Subject</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">();</span>
+
+    <span class="nx">setMessage</span><span class="p">(</span><span class="nx">value</span>:<span class="kt">string</span><span class="p">){</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">msgContent</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">getMessage</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">msgContent</span><span class="p">.</span><span class="nx">asObservable</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="sibling-one-component-ts">
+<div class="code-block-caption"><span class="caption-text">sibling-one-component.ts</span><a class="headerlink" href="#sibling-one-component-ts" title="Permalink to this code">¶</a></div>
+<div class="highlight-typescript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;@angular/core&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">DataService</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./data.service&#39;</span><span class="p">;</span>
+
+<span class="kd">@Component</span><span class="p">({</span>
+    <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;app-sibling-one&#39;</span><span class="p">,</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="sb">`</span>
+<span class="sb">    &lt;div style=&quot;margin-top:20px;margin-bottom: 15px;&quot;&gt; &lt;strong&gt;please input message: &lt;/strong&gt;</span>
+<span class="sb">    &lt;input style=&quot;width:300px;height:30px&quot; [(ngModel)]=&quot;message&quot; (keyup)=&quot;onMsgChange()&quot;/&gt;</span>
+<span class="sb">    &lt;/div&gt;</span>
+<span class="sb">    `</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">SiblingOneComponent</span> <span class="p">{</span>
+    <span class="kr">private</span> <span class="nx">message</span>: <span class="kt">string</span><span class="p">;</span>
+    <span class="kr">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">dataService</span>: <span class="kt">DataService</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+    <span class="nx">onMsgChange() {</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">dataService</span><span class="p">.</span><span class="nx">setMessage</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="sibling-two-component-ts">
+<div class="code-block-caption"><span class="caption-text">sibling-two-component.ts</span><a class="headerlink" href="#sibling-two-component-ts" title="Permalink to this code">¶</a></div>
+<div class="highlight-typescript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span><span class="p">,</span> <span class="nx">OnDestroy</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;@angular/core&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Subscription</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;rxjs&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">DataService</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./data.service&#39;</span><span class="p">;</span>
+
+<span class="kd">@Component</span><span class="p">({</span>
+    <span class="nx">selector</span><span class="o">:</span> <span class="s1">&#39;app-sibling-two&#39;</span><span class="p">,</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="sb">`</span>
+<span class="sb">    &lt;div style=&quot;margin-top:20px;margin-bottom: 15px;&quot;&gt; &lt;strong&gt;here is the message: &lt;/strong&gt;&lt;span&gt;{{msgContet}}&lt;/span&gt; &lt;/div&gt;</span>
+<span class="sb">    `</span>
+<span class="p">})</span>
+
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">SiblingTwoComponent</span> <span class="kr">implements</span> <span class="nx">OnDestroy</span> <span class="p">{</span>
+    <span class="kr">private</span> <span class="nx">subscription</span>: <span class="kt">Subscription</span><span class="p">;</span>
+    <span class="kr">private</span> <span class="nx">msgContet</span>: <span class="kt">string</span><span class="p">;</span>
+    <span class="kr">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">dataService</span>: <span class="kt">DataService</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">subscription</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dataService</span><span class="p">.</span><span class="nx">getMessage</span><span class="p">().</span><span class="nx">subscribe</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">msgContet</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+    <span class="nx">ngOnDestroy() {</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">subscription</span><span class="p">.</span><span class="nx">unsubscribe</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="unrelated-component-ts">
+<div class="code-block-caption"><span class="caption-text">unrelated-component.ts</span><a class="headerlink" href="#unrelated-component-ts" title="Permalink to this code">¶</a></div>
+<div class="highlight-typescript notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;@angular/core&quot;</span><span class="p">;</span>
+
+<span class="kd">@Component</span><span class="p">({</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="sb">`</span>
+<span class="sb">    &lt;div style=&quot;margin-left:100px;font-size:1.28em&quot;&gt;</span>
+<span class="sb">    &lt;app-sibling-one&gt;&lt;/app-sibling-one&gt;</span>
+<span class="sb">    &lt;app-sibling-two&gt;&lt;/app-sibling-two&gt;</span>
+<span class="sb">    &lt;/div&gt;`</span>
+
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">UnrelatedComponent</span> <span class="p">{</span> <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>效果如下：</p>
+<a class="reference internal image-reference" href="../_images/angular-sharing-data14.gif"><img alt="../_images/angular-sharing-data14.gif" src="../_images/angular-sharing-data14.gif" style="width: 600px;" /></a>
+</div>
+</div>
+<div class="section" id="id23">
+<h2><span class="sectnum">3.7</span> 组件的生命周期钩子函数<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>ngOnChanges  被绑定的输入属性值发生变化时触发，会调用多次；如果没有使用到父子组件传值，则不会触发</p></li>
+<li><p>ngOnInit     初始化组件时会调用一次，一般是用来在构造函数之后执行组件复杂的初始化逻辑</p></li>
+<li><p>ngDoCheck    只要数据发生改变就会被调用</p></li>
+<li><p>ngAfterContentInit   组件内容渲染完成后调用一次</p></li>
+<li><p>ngAfterContentChecked        只要组件的内容发生改变就会被调用</p></li>
+<li><p>ngAfterViewInit      视图加载完成后触发一次，一般用来对视图的 dom 元素进行操作</p></li>
+<li><p>ngAfterViewChecked   视图发生变化时调用，在组件的生命周期中会调用多次</p></li>
+<li><p>ngOnDestroy  只在销毁组件时调用一次，一般用来在组件销毁前执行某些操作</p></li>
+</ol>
+</div>
+<div class="section" id="id24">
+<h2><span class="sectnum">3.8</span> 参照<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>模块：<a class="reference external" href="https://angular.cn/guide/architecture-modules">https://angular.cn/guide/architecture-modules</a></p></li>
+<li><p>组件：<a class="reference external" href="https://angular.cn/guide/architecture-components">https://angular.cn/guide/architecture-components</a></p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="route.html" class="btn btn-neutral float-right" title="4 学习Angular模块路由和依赖注入知识" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="typescript.html" class="btn btn-neutral float-left" title="2 快速开启第一个Angular" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Murphy
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
